@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='cosmos-osm',
-    version='0.1',
+    version='0.0.1',
     description='Package for easy OSM data download',
     url='https://github.com/astrosat/cOSMos',
     author='Waldemar Franczak',
