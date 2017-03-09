@@ -6,7 +6,7 @@ from cosmos import Data
 
 
 def validate_filename(ctx, param, value):
-    if not os.path.exists(value):
+    if os.path.dirname(value) and not os.path.isdir(os.path.dirname(value)):
         print('No such directory: {}'.format(value))
         ctx.exit()
 
@@ -19,13 +19,13 @@ def validate_filename(ctx, param, value):
 
 
 @click.command()
-@click.option('--location', type=str,
+@click.option('-l', '--location', type=str,
               help='input location name(city, country)', prompt=True)
-@click.option('--filename', type=str, callback=validate_filename,
+@click.option('-f', '--filename', type=str, callback=validate_filename,
               help='output file name', prompt=True)
-@click.option('--dtype', type=click.Choice(['roads', 'cities', 'buildings']),
+@click.option('-d', '--dtype', type=click.Choice(['roads', 'cities', 'buildings']),
               default='roads', help='data type')
-@click.option('--bbox', type=(float, float, float, float),
+@click.option('-b', '--bbox', type=(float, float, float, float),
               default=(None, None, None, None),
               help='bbox in form (west_lat, north_lon, east_lat, south_lon)')
 def main(location, filename, dtype, bbox):
