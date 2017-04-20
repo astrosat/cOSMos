@@ -1,5 +1,5 @@
 # cOSMos package for OSM data retrieval
-**cOSMos** is a thin wrapper for [OSM overpass API](http://wiki.openstreetmap.org/wiki/Overpass_API) that provides a number of helper functions to make downloading particular Open Street Map data easier. It allows to extract common features of interest (road networks, city locations, building footprints) based on location name. 
+**cOSMos** is a thin wrapper for [OSM overpass API](http://wiki.openstreetmap.org/wiki/Overpass_API) that provides a number of helper functions to make downloading particular Open Street Map data easier. It allows to extract common features of interest (road networks, city locations, building footprints) based on location name.
 
 # Install
 ```bash
@@ -28,11 +28,11 @@ roads = data.get('roads', 'Kuala Lumpur', format='geojson')
 
 Location defined by bbox.
 ```python
-west_lat = 47.3202203,
-south_lon =  8.6254413
-east_lat = 47.4346662
-north_lon = 8.4480061
-zurich = (west_lat, north_lon, east_lat, south_lon)
+south = 47.3202203,
+west = 8.4480061
+north = 47.4346662
+east = 8.6254413
+zurich = (south, west, north, east)
 
 # Without format argument it will return 2 generators with geometries and tags.
 buildings, tags = data.get('buildings', bbox=zurich)
