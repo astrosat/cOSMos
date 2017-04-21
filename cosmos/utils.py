@@ -56,18 +56,17 @@ def coords_for(name):
 
         # Coordinates have to be flipped in order to work in overpass
         if geometry.geom_type == 'Polygon':
-            top, left, bottom, right = geometry.bounds
-            return BoundingBox(left, top, right, bottom)
-
+            west, south, east, north = geometry.bounds
+            return BoundingBox(south, west, north, east)
         elif geometry.geom_type == 'MultiPolygon':
             bboxs = (BoundingBox(*(g.bounds[0:2][::-1] + g.bounds[2:][::-1]))
                      for g in geometry)
             return bboxs
         elif geometry.geom_type == 'Point':
-            left, right, top, bottom = (float(coordinate)
+            south, north, west, east = (float(coordinate)
                                         for coordinate in
                                         location.raw['boundingbox'])
-            return BoundingBox(left, top, right, bottom)
+            return BoundingBox(south, west, north, east)
 
     except (KeyError, AttributeError):
         raise AttributeError(

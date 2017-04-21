@@ -34,7 +34,7 @@ def building_query(bbox):
 def city_query(bbox):
     return JSON_QUERY_TEMPLATE.format(*(bbox + CITY_QUERY))
 
-BoundingBox = namedtuple('BoundingBox', ('left', 'top', 'right', 'bottom'))
+BoundingBox = namedtuple('BoundingBox', ('south', 'west', 'north', 'east'))
 
 DataType = {
     'roads': {
