@@ -53,7 +53,7 @@ Options:
   --dtype [roads|cities|buildings]
                                   data type
   --bbox <FLOAT FLOAT FLOAT FLOAT>...
-                                  bbox in form (lat1, lon1, lat2, lon2)
+                                  bbox in form (south, west, north, east)
   --help                          Show this message and exit.
 ```
 
